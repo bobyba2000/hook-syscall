@@ -14,7 +14,8 @@ asmlinkage long sys_pnametoid(char* name) {
 	for_each_process(task) { 
 		if(strcmp(task->comm,buf) == 0) {
 			pid = task->pid;
+			return (long)pid;
 		}
 	}
-	return (long)pid;
+	return -1;
 }
